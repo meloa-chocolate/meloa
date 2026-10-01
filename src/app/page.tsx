@@ -6,6 +6,7 @@ import { EditorialSection } from "@/components/EditorialSection";
 import { FAQSection } from "@/components/FAQSection";
 import { OrderForm } from "@/components/OrderForm";
 import { ProductGrid } from "@/components/ProductGrid";
+import { SocialSection } from "@/components/SocialSection";
 import { products } from "@/data/products";
 import { BRAND } from "@/lib/brand";
 import { SITE_URL } from "@/lib/site";
@@ -29,6 +30,19 @@ export default function Home() {
       },
     }));
 
+  const brandSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: BRAND.name,
+    url: SITE_URL,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Tallinn",
+      addressCountry: "EE",
+    },
+    sameAs: [BRAND.instagram, BRAND.tiktok].filter(Boolean),
+  };
+
   return (
     <>
       <Header />
@@ -37,11 +51,13 @@ export default function Home() {
         <ProductGrid />
         <GiftSection />
         <EditorialSection />
+        <SocialSection />
         <OrderForm />
         <FAQSection />
       </main>
       <Footer />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(brandSchema) }} />
     </>
   );
 }
