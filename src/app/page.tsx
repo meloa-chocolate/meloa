@@ -4,7 +4,6 @@ import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { OccasionsSection } from "@/components/OccasionsSection";
 import { OrderForm } from "@/components/OrderForm";
-import { ProcessSection } from "@/components/ProcessSection";
 import { ProductGrid } from "@/components/ProductGrid";
 import { products } from "@/data/products";
 import { BRAND } from "@/lib/brand";
@@ -36,7 +35,6 @@ export default function Home() {
         <Hero />
         <ProductGrid />
         <GiftSection />
-        <ProcessSection />
         <OccasionsSection />
         <OrderForm />
       </main>
