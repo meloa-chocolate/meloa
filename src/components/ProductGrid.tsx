@@ -9,9 +9,42 @@ import { useCart } from "@/components/CartProvider";
 import { useState } from "react";
 
 const localCopy = {
-  et: { available: "Saadaval", development: "Arenduses", vote: "Hääleta selle maitse poolt", close: "Sulge" },
-  ru: { available: "Доступно", development: "В разработке", vote: "Проголосовать за этот вкус", close: "Закрыть" },
-  en: { available: "Available", development: "In development", vote: "Vote for this flavour", close: "Close" },
+  et: {
+    available: "Saadaval",
+    development: "Arenduses",
+    vote: "Hääleta selle maitse poolt",
+    close: "Sulge",
+    signatureIngredients: [
+      "Valge Belgia šokolaad",
+      "Kooritud ja soolamata pistaatsiapähklid",
+      "Külmkuivatatud vaarikas",
+      "Jäme meresool",
+    ],
+  },
+  ru: {
+    available: "Доступно",
+    development: "В разработке",
+    vote: "Проголосовать за этот вкус",
+    close: "Закрыть",
+    signatureIngredients: [
+      "Белый бельгийский шоколад",
+      "Фисташки, очищенные и несолёные",
+      "Сублимированная малина",
+      "Крупная морская соль",
+    ],
+  },
+  en: {
+    available: "Available",
+    development: "In development",
+    vote: "Vote for this flavour",
+    close: "Close",
+    signatureIngredients: [
+      "Belgian white chocolate",
+      "Shelled unsalted pistachios",
+      "Freeze-dried raspberry",
+      "Coarse sea salt",
+    ],
+  },
 } as const;
 
 export function ProductGrid() {
@@ -57,7 +90,7 @@ export function ProductGrid() {
           <p className="mt-5 max-w-lg text-sm leading-6 text-cocoa/52">{productCopy[signature.id][language].subtitle}</p>
 
           <div className="mt-7 grid grid-cols-2 gap-2 sm:grid-cols-4">
-            {signature.ingredients.map((ingredient) => <span key={ingredient} className="rounded-[1rem] border border-cocoa/10 bg-sand/35 px-3 py-3 text-xs leading-5 text-cocoa/62">{ingredient}</span>)}
+            {ui.signatureIngredients.map((ingredient) => <span key={ingredient} className="rounded-[1rem] border border-cocoa/10 bg-sand/35 px-3 py-3 text-xs leading-5 text-cocoa/62">{ingredient}</span>)}
           </div>
 
           <div className="mt-8 flex flex-wrap items-center gap-4">
