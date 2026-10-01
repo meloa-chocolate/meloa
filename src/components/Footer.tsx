@@ -1,6 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { BRAND } from "@/lib/brand";
+import { assetPath } from "@/lib/asset";
 import { useLanguage } from "@/components/LanguageProvider";
 
 export function Footer() {
@@ -18,7 +20,15 @@ export function Footer() {
       <div className="shell py-10">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           <div>
-            <p className="brand-mark">{BRAND.name}</p>
+            <a href="#top" className="focus-ring inline-block rounded-2xl" aria-label={`${BRAND.name}, home`}>
+              <Image
+                src={assetPath("/brand/logo.webp")}
+                alt="Meloa — Handmade Chocolate · Tallinn"
+                width={700}
+                height={438}
+                className="h-auto w-44 object-contain"
+              />
+            </a>
             <p className="mt-3 text-sm leading-6 text-cocoa/60">{t.footer.tagline}</p>
           </div>
 
