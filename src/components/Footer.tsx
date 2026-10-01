@@ -24,7 +24,9 @@ export function Footer() {
           <div>
             <p className="footer-title">{t.footer.social}</p>
             <div className="footer-links">
-              {socialLinks.length > 0 ? socialLinks.map(([label, href]) => <a key={label} href={href}>{label}</a>) : <span className="text-cocoa/38">—</span>}
+              {socialLinks.length > 0 ? socialLinks.map(([label, href]) => (
+                <a key={label} href={href} target="_blank" rel="noreferrer">{label} ↗</a>
+              )) : <span className="text-cocoa/38">—</span>}
             </div>
           </div>
 
