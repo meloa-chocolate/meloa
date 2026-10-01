@@ -5,6 +5,9 @@ import { SITE_URL } from "@/lib/site";
 import { LanguageProvider } from "@/components/LanguageProvider";
 import { CartProvider } from "@/components/CartProvider";
 
+const OG_IMAGE = `${SITE_URL}/brand/og-preview.webp`;
+const BRAND_ICON = `${SITE_URL}/brand/emblem.webp`;
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: `${BRAND.name} — käsitööšokolaad Tallinnas`,
@@ -15,9 +18,21 @@ export const metadata: Metadata = {
     type: "website",
     locale: "et_EE",
     alternateLocale: ["ru_EE", "en_EE"],
-    images: [{ url: "/images/hero.jpg", width: 1200, height: 1500, alt: `${BRAND.name} handmade chocolate` }],
+    url: SITE_URL,
+    siteName: BRAND.name,
+    images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: "Meloa — Handmade Chocolate · Tallinn" }],
   },
-  icons: { icon: "/favicon.svg" },
+  twitter: {
+    card: "summary_large_image",
+    title: `${BRAND.name} — handmade chocolate in Tallinn`,
+    description: "Small-batch handmade chocolate, gift ready in Tallinn.",
+    images: [OG_IMAGE],
+  },
+  icons: {
+    icon: BRAND_ICON,
+    shortcut: BRAND_ICON,
+    apple: BRAND_ICON,
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
