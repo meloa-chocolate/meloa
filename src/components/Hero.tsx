@@ -21,8 +21,8 @@ export function Hero() {
       <div className="order-1 lg:order-2">
         <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] bg-sand shadow-soft sm:aspect-[5/6] lg:aspect-[4/5]">
           <Image
-            src={assetPath("/images/hero.jpg")}
-            alt="Meloa handmade chocolate gift presentation"
+            src={assetPath("/images/hero.webp")}
+            alt="Meloa handmade chocolate gifts in presentation boxes"
             fill
             priority
             sizes="(max-width: 1024px) 100vw, 60vw"
