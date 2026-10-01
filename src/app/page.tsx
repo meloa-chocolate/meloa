@@ -11,6 +11,7 @@ import { ExperienceSection } from "@/components/ExperienceSection";
 import { FlavorVoteSection } from "@/components/FlavorVoteSection";
 import { products } from "@/data/products";
 import { BRAND } from "@/lib/brand";
+import { productCopy } from "@/lib/i18n";
 import { SITE_URL } from "@/lib/site";
 
 export default function Home() {
@@ -20,7 +21,7 @@ export default function Home() {
       "@context": "https://schema.org",
       "@type": "Product",
       name: product.name,
-      description: product.description,
+      description: productCopy[product.id].et.description,
       image: `${SITE_URL}${product.image}`,
       brand: { "@type": "Brand", name: BRAND.name },
       offers: {
@@ -37,6 +38,8 @@ export default function Home() {
     "@type": "Organization",
     name: BRAND.name,
     url: SITE_URL,
+    logo: `${SITE_URL}/brand/emblem.webp`,
+    image: `${SITE_URL}/brand/og-preview.webp`,
     address: {
       "@type": "PostalAddress",
       addressLocality: "Tallinn",
@@ -48,7 +51,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main>
+      <main id="main-content">
         <Hero />
         <ProductGrid />
         <ExperienceSection />
