@@ -1,0 +1,1 @@
+Brand assets for Meloa. The raster source files are derived from the approved logo board supplied in chat.
