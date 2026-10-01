@@ -7,6 +7,8 @@ import { FAQSection } from "@/components/FAQSection";
 import { OrderForm } from "@/components/OrderForm";
 import { ProductGrid } from "@/components/ProductGrid";
 import { SocialSection } from "@/components/SocialSection";
+import { ExperienceSection } from "@/components/ExperienceSection";
+import { FlavorVoteSection } from "@/components/FlavorVoteSection";
 import { products } from "@/data/products";
 import { BRAND } from "@/lib/brand";
 import { SITE_URL } from "@/lib/site";
@@ -49,8 +51,10 @@ export default function Home() {
       <main>
         <Hero />
         <ProductGrid />
+        <ExperienceSection />
         <GiftSection />
         <EditorialSection />
+        <FlavorVoteSection />
         <SocialSection />
         <OrderForm />
         <FAQSection />
