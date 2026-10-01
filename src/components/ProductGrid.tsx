@@ -51,17 +51,27 @@ export function ProductGrid() {
             <p className="eyebrow">COMING NEXT</p>
             <h3 className="mt-3 font-serif text-3xl sm:text-4xl">Следующие вкусы</h3>
           </div>
-          <p className="max-w-md text-sm leading-6 text-cocoa/55">Покажем их в продаже только после финальной рецептуры и реальной съёмки.</p>
+          <p className="max-w-md text-sm leading-6 text-cocoa/55">Новые вкусы уже получили собственную визуальную серию. В продажу добавим их после финальной рецептуры.</p>
         </div>
-        <div className="mt-7 divide-y divide-cocoa/10 border-y border-cocoa/10">
+
+        <div className="mt-8 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
           {coming.map((product) => (
-            <div key={product.id} className="flex items-center justify-between gap-5 py-4">
-              <div>
-                <p className="font-serif text-xl">{product.name}</p>
-                <p className="mt-1 text-sm text-cocoa/52">{product.subtitle}</p>
+            <article key={product.id} className="group">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-[1.5rem] bg-sand">
+                <Image
+                  src={assetPath(product.image)}
+                  alt={product.imageAlt}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 25vw"
+                  className="object-cover transition-transform duration-500 motion-safe:group-hover:scale-[1.025]"
+                />
+                <span className="absolute right-3 top-3 rounded-full bg-cream/92 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.08em] text-cocoa backdrop-blur-sm">
+                  Coming soon
+                </span>
               </div>
-              <span className="shrink-0 text-xs uppercase tracking-[0.12em] text-cocoa/42">Coming soon</span>
-            </div>
+              <h4 className="mt-4 font-serif text-2xl">{product.name}</h4>
+              <p className="mt-2 text-sm leading-6 text-cocoa/55">{product.subtitle}</p>
+            </article>
           ))}
         </div>
       </div>
