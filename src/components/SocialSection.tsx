@@ -34,7 +34,7 @@ const copy = {
 
 const cards = [
   { image: "/images/process-1.jpg", network: "instagram" as const },
-  { image: "/images/gift-box.jpg", network: "instagram" as const },
+  { image: "/images/gift-box.webp", network: "instagram" as const },
   { image: "/images/process-3.jpg", network: "tiktok" as const },
 ];
 
