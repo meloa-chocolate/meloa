@@ -1,18 +1,51 @@
 "use client";
 
 import Image from "next/image";
+import { useState } from "react";
 import { products } from "@/data/products";
 import { assetPath } from "@/lib/asset";
 import { productCopy } from "@/lib/i18n";
 import { useLanguage } from "@/components/LanguageProvider";
 import { useCart } from "@/components/CartProvider";
 
+const ingredientCopy = {
+  et: ["Belgia valge šokolaad", "Pistaatsia", "Külmkuivatatud vaarikas", "Jäme meresool"],
+  ru: ["Белый бельгийский шоколад", "Фисташка", "Сублимированная малина", "Крупная морская соль"],
+  en: ["Belgian white chocolate", "Pistachio", "Freeze-dried raspberry", "Coarse sea salt"],
+} as const;
+
+const feedbackCopy = {
+  et: "Lisatud tellimusse",
+  ru: "Добавлено в заказ",
+  en: "Added to order",
+} as const;
+
 export function ProductGrid() {
   const { language, t } = useLanguage();
   const { quantities, setQuantity } = useCart();
+  const [feedback, setFeedback] = useState(false);
   const signature = products.find((product) => product.id === "raspberry-pistachio")!;
   const coming = products.filter((product) => product.id !== signature.id);
   const quantity = quantities[signature.id] ?? 0;
+
+  const showFeedback = () => {
+    setFeedback(true);
+    window.setTimeout(() => setFeedback(false), 1400);
+  };
+
+  const increase = () => {
+    setQuantity(signature.id, quantity + 1);
+    showFeedback();
+  };
+
+  const primaryAction = () => {
+    if (quantity === 0) {
+      setQuantity(signature.id, 1);
+      showFeedback();
+      return;
+    }
+    document.querySelector("#order")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
 
   return (
     <section id="chocolate" className="section shell">
@@ -37,17 +70,28 @@ export function ProductGrid() {
           <p className="text-sm uppercase tracking-[0.1em] text-cocoa/45">{t.signature.meta}</p>
           <h3 className="mt-4 font-serif text-4xl leading-tight sm:text-5xl">{t.signature.headline}</h3>
           <p className="mt-5 max-w-lg text-base leading-7 text-cocoa/66">{productCopy[signature.id][language].description}</p>
-          <p className="mt-5 max-w-lg text-sm leading-6 text-cocoa/52">{productCopy[signature.id][language].subtitle}</p>
+
+          <div className="mt-7 grid grid-cols-2 gap-px overflow-hidden rounded-[1.25rem] bg-cocoa/10">
+            {ingredientCopy[language].map((ingredient, index) => (
+              <div key={ingredient} className="bg-cream px-4 py-4">
+                <p className="text-[11px] font-semibold tracking-[.12em] text-cocoa/35">0{index + 1}</p>
+                <p className="mt-1 text-sm leading-5 text-cocoa/72">{ingredient}</p>
+              </div>
+            ))}
+          </div>
 
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <div className="flex min-h-12 items-center rounded-full border border-cocoa/16 bg-cream" aria-label={t.signature.quantity}>
               <button type="button" onClick={() => setQuantity(signature.id, quantity - 1)} className="focus-ring min-h-12 min-w-12 rounded-l-full text-xl" aria-label="Decrease">−</button>
               <output className="min-w-10 text-center text-sm font-semibold" aria-live="polite">{quantity}</output>
-              <button type="button" onClick={() => setQuantity(signature.id, quantity + 1)} className="focus-ring min-h-12 min-w-12 rounded-r-full text-xl" aria-label="Increase">+</button>
+              <button type="button" onClick={increase} className="focus-ring min-h-12 min-w-12 rounded-r-full text-xl" aria-label="Increase">+</button>
             </div>
-            <a href="#order" className="button button-dark min-h-12 focus-ring">
-              {quantity > 0 ? `${t.signature.inOrder} · ${quantity} · €${(quantity * signature.price).toFixed(2)}` : `${t.signature.add} · €${signature.price}`}
-            </a>
+            <button type="button" onClick={primaryAction} className="button button-dark min-h-12 focus-ring">
+              {quantity > 0 ? `${t.nav.order} · ${quantity} · €${(quantity * signature.price).toFixed(2)}` : `${t.signature.add} · €${signature.price}`}
+            </button>
+            <span className={`text-sm text-cocoa/55 transition-opacity duration-200 ${feedback ? "opacity-100" : "opacity-0"}`} role="status" aria-live="polite">
+              {feedbackCopy[language]}
+            </span>
           </div>
         </div>
       </div>
