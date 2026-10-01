@@ -12,8 +12,8 @@ export function GiftSection() {
       <div className="shell grid gap-10 lg:grid-cols-2 lg:gap-16">
         <div className="relative min-h-[500px] overflow-hidden rounded-[2rem] sm:min-h-[660px]">
           <Image
-            src={assetPath("/images/gift-box.jpg")}
-            alt="Meloa chocolate gift packaging"
+            src={assetPath("/images/gift-box.webp")}
+            alt="Meloa chocolate gift packaging with Raspberry Pistachio"
             fill
             sizes="(max-width: 1024px) 100vw, 50vw"
             className="object-cover"
