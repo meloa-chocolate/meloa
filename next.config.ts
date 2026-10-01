@@ -13,6 +13,19 @@ const nextConfig: NextConfig = {
     unoptimized: isGitHubPages,
   },
   poweredByHeader: false,
+  async headers() {
+    if (isGitHubPages) return [];
+    return [
+      {
+        source: "/api/order",
+        headers: [
+          { key: "Access-Control-Allow-Origin", value: "https://meloa-chocolate.github.io" },
+          { key: "Access-Control-Allow-Methods", value: "POST, OPTIONS" },
+          { key: "Access-Control-Allow-Headers", value: "Content-Type" },
+        ],
+      },
+    ];
+  },
 };
 
 export default nextConfig;
