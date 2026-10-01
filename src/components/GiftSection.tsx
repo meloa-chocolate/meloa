@@ -1,20 +1,19 @@
+"use client";
+
 import Image from "next/image";
 import { assetPath } from "@/lib/asset";
-
-const benefits = [
-  ["01", "Handmade", "Каждая партия делается вручную небольшим тиражом."],
-  ["02", "Gift ready", "Красивая упаковка — не нужно дополнительно оформлять подарок."],
-  ["03", "Quality ingredients", "Качественный шоколад, орехи, ягоды и тщательно подобранные сочетания."],
-];
+import { useLanguage } from "@/components/LanguageProvider";
 
 export function GiftSection() {
+  const { t } = useLanguage();
+
   return (
-    <section id="gifts" className="section bg-pistachio/22">
+    <section id="gifts" className="section bg-pistachio/18">
       <div className="shell grid gap-10 lg:grid-cols-2 lg:gap-16">
-        <div className="relative min-h-[460px] overflow-hidden rounded-[2rem] sm:min-h-[620px]">
+        <div className="relative min-h-[500px] overflow-hidden rounded-[2rem] sm:min-h-[660px]">
           <Image
             src={assetPath("/images/gift-box.jpg")}
-            alt="Несколько плиток шоколада в подарочной упаковке"
+            alt="Meloa chocolate gift packaging"
             fill
             sizes="(max-width: 1024px) 100vw, 50vw"
             className="object-cover"
@@ -22,14 +21,12 @@ export function GiftSection() {
         </div>
 
         <div id="about" className="self-center">
-          <p className="eyebrow">GIFT READY</p>
-          <h2 className="section-title mt-4">Не просто шоколад</h2>
-          <p className="mt-5 max-w-xl text-base leading-7 text-cocoa/68">
-            Мы относимся к каждой плитке как к маленькому подарку: важны и вкус, и фактура,
-            и момент, когда человек открывает упаковку.
-          </p>
+          <p className="eyebrow">{t.gift.eyebrow}</p>
+          <h2 className="section-title mt-4">{t.gift.title}</h2>
+          <p className="mt-5 max-w-xl text-base leading-7 text-cocoa/68">{t.gift.body}</p>
+
           <div className="mt-10 divide-y divide-cocoa/14 border-y border-cocoa/14">
-            {benefits.map(([number, title, text]) => (
+            {t.gift.benefits.map(([number, title, text]) => (
               <div key={number} className="grid grid-cols-[3rem_1fr] gap-4 py-6 sm:grid-cols-[4rem_1fr]">
                 <span className="font-serif text-2xl text-cocoa/45">{number}</span>
                 <div>
@@ -38,6 +35,11 @@ export function GiftSection() {
                 </div>
               </div>
             ))}
+          </div>
+
+          <div className="mt-8 rounded-[1.5rem] border border-cocoa/12 bg-cream/55 p-5">
+            <p className="text-sm font-semibold">{t.gift.noteTitle}</p>
+            <p className="mt-2 max-w-md text-sm leading-6 text-cocoa/62">{t.gift.noteBody}</p>
           </div>
         </div>
       </div>
