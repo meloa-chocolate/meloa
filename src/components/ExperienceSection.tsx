@@ -84,7 +84,7 @@ const copy = {
   },
 } as const;
 
-const unboxingImages = ["/images/gift-box.jpg", "/images/hero.jpg", "/images/raspberry-pistachio.jpg"];
+const unboxingImages = ["/images/gift-box.webp", "/images/hero.webp", "/images/raspberry-pistachio.webp"];
 
 export function ExperienceSection() {
   const { language } = useLanguage();
