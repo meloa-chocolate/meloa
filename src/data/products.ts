@@ -37,7 +37,7 @@ export const products: Product[] = [
     weight: "100 г",
     image: "/images/raspberry-pistachio.jpg",
     imageAlt: "Плитка белого шоколада с малиной и фисташкой ручной работы",
-    badge: "Bestseller",
+    badge: "Signature",
     available: true,
     foodInfo: {
       fullIngredients: "Белый бельгийский шоколад, фисташки (очищенные, несолёные), сублимированная малина, крупная морская соль.",
@@ -58,15 +58,8 @@ export const products: Product[] = [
     weight: "100 г",
     image: "/images/dark-orange.svg",
     imageAlt: "Placeholder изображения шоколада Dark Orange",
-    available: true,
-    foodInfo: {
-      fullIngredients: "TODO: заменить подтверждённым составом.",
-      allergens: "TODO",
-      storage: "TODO",
-      bestBefore: "TODO",
-      nutrition: "TODO",
-      manufacturer: "TODO",
-    },
+    available: false,
+    foodInfo: { fullIngredients: "TODO", allergens: "TODO", storage: "TODO", bestBefore: "TODO", nutrition: "TODO", manufacturer: "TODO" },
   },
   {
     id: "hazelnut-crunch",
@@ -78,15 +71,8 @@ export const products: Product[] = [
     weight: "100 г",
     image: "/images/hazelnut-crunch.svg",
     imageAlt: "Placeholder изображения шоколада Hazelnut Crunch",
-    available: true,
-    foodInfo: {
-      fullIngredients: "TODO: заменить подтверждённым составом.",
-      allergens: "TODO",
-      storage: "TODO",
-      bestBefore: "TODO",
-      nutrition: "TODO",
-      manufacturer: "TODO",
-    },
+    available: false,
+    foodInfo: { fullIngredients: "TODO", allergens: "TODO", storage: "TODO", bestBefore: "TODO", nutrition: "TODO", manufacturer: "TODO" },
   },
   {
     id: "strawberry-matcha",
@@ -99,14 +85,7 @@ export const products: Product[] = [
     image: "/images/strawberry-matcha.svg",
     imageAlt: "Placeholder изображения шоколада Strawberry Matcha",
     available: false,
-    foodInfo: {
-      fullIngredients: "TODO: заменить подтверждённым составом.",
-      allergens: "TODO",
-      storage: "TODO",
-      bestBefore: "TODO",
-      nutrition: "TODO",
-      manufacturer: "TODO",
-    },
+    foodInfo: { fullIngredients: "TODO", allergens: "TODO", storage: "TODO", bestBefore: "TODO", nutrition: "TODO", manufacturer: "TODO" },
   },
   {
     id: "salted-caramel",
@@ -118,15 +97,8 @@ export const products: Product[] = [
     weight: "100 г",
     image: "/images/salted-caramel.svg",
     imageAlt: "Placeholder изображения шоколада Salted Caramel",
-    available: true,
-    foodInfo: {
-      fullIngredients: "TODO: заменить подтверждённым составом.",
-      allergens: "TODO",
-      storage: "TODO",
-      bestBefore: "TODO",
-      nutrition: "TODO",
-      manufacturer: "TODO",
-    },
+    available: false,
+    foodInfo: { fullIngredients: "TODO", allergens: "TODO", storage: "TODO", bestBefore: "TODO", nutrition: "TODO", manufacturer: "TODO" },
   },
 ];
 
