@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { products } from "@/data/products";
+import { assetPath } from "@/lib/asset";
 
 export function ProductGrid() {
   const signature = products.find((product) => product.id === "raspberry-pistachio")!;
@@ -22,7 +23,7 @@ export function ProductGrid() {
       <div className="mt-10 grid items-center gap-8 lg:grid-cols-[1.08fr_.92fr] lg:gap-14">
         <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] bg-sand">
           <Image
-            src={signature.image}
+            src={assetPath(signature.image)}
             alt={signature.imageAlt}
             fill
             sizes="(max-width: 1024px) 100vw, 55vw"
