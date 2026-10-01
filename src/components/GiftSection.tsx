@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { assetPath } from "@/lib/asset";
 
 const benefits = [
   ["01", "Handmade", "Каждая партия делается вручную небольшим тиражом."],
@@ -12,7 +13,7 @@ export function GiftSection() {
       <div className="shell grid gap-10 lg:grid-cols-2 lg:gap-16">
         <div className="relative min-h-[460px] overflow-hidden rounded-[2rem] sm:min-h-[620px]">
           <Image
-            src="/images/gift-box.jpg"
+            src={assetPath("/images/gift-box.jpg")}
             alt="Несколько плиток шоколада в подарочной упаковке"
             fill
             sizes="(max-width: 1024px) 100vw, 50vw"
