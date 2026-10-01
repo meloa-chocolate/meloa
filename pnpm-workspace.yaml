@@ -10,4 +10,3 @@ minimumReleaseAgeExclude:
   - '@next/swc-win32-arm64-msvc@15.5.27'
   - '@next/swc-win32-x64-msvc@15.5.27'
   - next@15.5.27
-

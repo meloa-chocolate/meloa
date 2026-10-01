@@ -112,4 +112,3 @@ The site can be deployed without Telegram credentials. `POST /api/order` returns
 Successful deployment is not evidence of live Telegram delivery. After adding credentials, submit one clearly marked test order and confirm receipt in the intended chat.
 
 The supplied catalog still contains provisional prices/weights and four placeholder images. `BRAND` still contains placeholder contacts/social links; footer legal anchors need real pages. Confirm these and the food information before using the site for live sales. No legal or product claims have been invented during deployment preparation.
-
