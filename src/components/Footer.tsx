@@ -5,8 +5,15 @@ import { BRAND } from "@/lib/brand";
 import { assetPath } from "@/lib/asset";
 import { useLanguage } from "@/components/LanguageProvider";
 
+const localCopy = {
+  et: { info: "Info", home: "Meloa avaleht" },
+  ru: { info: "Информация", home: "Главная Meloa" },
+  en: { info: "Info", home: "Meloa home" },
+} as const;
+
 export function Footer() {
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
+  const ui = localCopy[language];
   const socialLinks = [
     ["Instagram", BRAND.instagram],
     ["TikTok", BRAND.tiktok],
@@ -20,7 +27,7 @@ export function Footer() {
       <div className="shell py-10">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           <div>
-            <a href="#top" className="focus-ring inline-block rounded-2xl" aria-label={`${BRAND.name}, home`}>
+            <a href="#top" className="focus-ring inline-block rounded-2xl" aria-label={ui.home}>
               <Image
                 src={assetPath("/brand/logo.webp")}
                 alt="Meloa — Handmade Chocolate · Tallinn"
@@ -50,7 +57,7 @@ export function Footer() {
           </div>
 
           <div>
-            <p className="footer-title">Info</p>
+            <p className="footer-title">{ui.info}</p>
             <p className="mt-3 max-w-xs text-sm leading-6 text-cocoa/55">{t.footer.note}</p>
           </div>
         </div>
