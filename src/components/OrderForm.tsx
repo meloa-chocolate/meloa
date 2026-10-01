@@ -6,6 +6,7 @@ import { availableProducts } from "@/data/products";
 type Quantities = Record<string, number>;
 
 const emptyQuantities = Object.fromEntries(availableProducts.map((product) => [product.id, 0])) as Quantities;
+const ORDER_API_URL = process.env.NEXT_PUBLIC_ORDER_API_URL || "/api/order";
 
 export function OrderForm() {
   const [quantities, setQuantities] = useState<Quantities>(emptyQuantities);
@@ -72,7 +73,7 @@ export function OrderForm() {
     };
 
     try {
-      const response = await fetch("/api/order", {
+      const response = await fetch(ORDER_API_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
