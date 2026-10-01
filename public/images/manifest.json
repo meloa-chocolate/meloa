@@ -1,0 +1,58 @@
+{
+  "hero.webp": {
+    "source": "romantic_raspberry_pistachio_chocolate_gifts.png",
+    "size": [
+      1122,
+      1402
+    ],
+    "bytes": 315104
+  },
+  "gift-box.webp": {
+    "source": "blush_raspberry_pistachio_gift_box.png",
+    "size": [
+      1122,
+      1402
+    ],
+    "bytes": 226926
+  },
+  "raspberry-pistachio.webp": {
+    "source": "raspberry_pistachio_chocolate_gift_box.png",
+    "size": [
+      1122,
+      1402
+    ],
+    "bytes": 238218
+  },
+  "dark-orange.webp": {
+    "source": "candied_orange_almond_chocolate_gift_box.png",
+    "size": [
+      1122,
+      1402
+    ],
+    "bytes": 258572
+  },
+  "hazelnut-crunch.webp": {
+    "source": "romantic_hazelnut_chocolate_gift_box.png",
+    "size": [
+      1122,
+      1402
+    ],
+    "bytes": 243010
+  },
+  "strawberry-matcha.webp": {
+    "source": "strawberry_matcha_chocolate_gift_box.png",
+    "size": [
+      1122,
+      1402
+    ],
+    "bytes": 259816
+  },
+  "salted-caramel.webp": {
+    "source": "salted_caramel_chocolate_gift_box.png",
+    "size": [
+      1122,
+      1402
+    ],
+    "bytes": 246940
+  }
+}
