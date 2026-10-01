@@ -7,6 +7,7 @@ const CORS_HEADERS = {
   "Access-Control-Allow-Origin": "https://meloa-chocolate.github.io",
   "Access-Control-Allow-Methods": "POST, OPTIONS",
   "Access-Control-Allow-Headers": "Content-Type",
+  "Cache-Control": "no-store",
 };
 
 const json = (body: unknown, init?: ResponseInit) =>
@@ -138,6 +139,7 @@ export async function POST(request: Request) {
     return json({ error: "Неизвестный тип запроса." }, { status: 400 });
   }
 
+  const language = clean(body.language, 5) || "—";
   const name = clean(body.name, 80);
   const contact = clean(body.contact, 100);
   const comment = clean(body.comment, 500);
@@ -202,6 +204,7 @@ export async function POST(request: Request) {
     "",
     `<b>Имя:</b> ${escapeHtml(name)}`,
     `<b>Контакт:</b> ${escapeHtml(contact)}`,
+    `<b>Язык сайта:</b> ${escapeHtml(language)}`,
     "",
     "<b>Заказ:</b>",
     itemLines,
