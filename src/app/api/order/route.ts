@@ -21,34 +21,10 @@ export async function OPTIONS() {
 
 type OrderItem = {
   id: string;
-  name?: string;
   quantity: number;
-  unitPrice?: number;
 };
 
-type OrderPayload = {
-  type?: "order";
-  name: string;
-  contact: string;
-  comment?: string;
-  fulfillment: string;
-  consent: boolean;
-  items: OrderItem[];
-};
-
-type VotePayload = {
-  type: "vote";
-  flavor: string;
-  language?: string;
-};
-
-type WaitlistPayload = {
-  type: "waitlist";
-  flavor: string;
-  contact: string;
-  consent: boolean;
-  language?: string;
-};
+type RequestBody = Record<string, unknown>;
 
 const clean = (value: unknown, max: number) =>
   typeof value === "string" ? value.trim().slice(0, max) : "";
@@ -115,7 +91,7 @@ export async function POST(request: Request) {
     return json({ error: "Некорректные данные." }, { status: 400 });
   }
 
-  const body = parsed as Partial<OrderPayload & VotePayload & WaitlistPayload>;
+  const body = parsed as RequestBody;
   const type = clean(body.type, 20) || "order";
 
   if (type === "vote") {
@@ -158,6 +134,10 @@ export async function POST(request: Request) {
     return result.ok ? json({ ok: true }) : json({ error: result.error }, { status: result.status });
   }
 
+  if (type !== "order") {
+    return json({ error: "Неизвестный тип запроса." }, { status: 400 });
+  }
+
   const name = clean(body.name, 80);
   const contact = clean(body.contact, 100);
   const comment = clean(body.comment, 500);
@@ -191,16 +171,21 @@ export async function POST(request: Request) {
   const items: { product: (typeof products)[number]; quantity: number }[] = [];
   const seen = new Set<string>();
 
-  for (const item of body.items) {
-    if (!item || typeof item !== "object") {
+  for (const rawItem of body.items) {
+    if (!rawItem || typeof rawItem !== "object" || Array.isArray(rawItem)) {
       return json({ error: "Проверьте товары и количество." }, { status: 400 });
     }
-    const product = products.find((candidate) => candidate.id === item.id && candidate.available);
+
+    const item = rawItem as Partial<OrderItem>;
+    const id = clean(item.id, 80);
     const quantity = item.quantity;
-    if (!product || typeof quantity !== "number" || !Number.isInteger(quantity) || quantity < 1 || quantity > 20 || seen.has(item.id)) {
+    const product = products.find((candidate) => candidate.id === id && candidate.available);
+
+    if (!product || typeof quantity !== "number" || !Number.isInteger(quantity) || quantity < 1 || quantity > 20 || seen.has(id)) {
       return json({ error: "Проверьте товары и количество." }, { status: 400 });
     }
-    seen.add(item.id);
+
+    seen.add(id);
     items.push({ product, quantity });
   }
 
