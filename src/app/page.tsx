@@ -2,7 +2,8 @@ import { Footer } from "@/components/Footer";
 import { GiftSection } from "@/components/GiftSection";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
-import { OccasionsSection } from "@/components/OccasionsSection";
+import { EditorialSection } from "@/components/EditorialSection";
+import { FAQSection } from "@/components/FAQSection";
 import { OrderForm } from "@/components/OrderForm";
 import { ProductGrid } from "@/components/ProductGrid";
 import { products } from "@/data/products";
@@ -35,14 +36,12 @@ export default function Home() {
         <Hero />
         <ProductGrid />
         <GiftSection />
-        <OccasionsSection />
+        <EditorialSection />
         <OrderForm />
+        <FAQSection />
       </main>
       <Footer />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />
     </>
   );
 }
