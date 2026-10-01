@@ -4,8 +4,14 @@ import Image from "next/image";
 import { assetPath } from "@/lib/asset";
 import { useLanguage } from "@/components/LanguageProvider";
 
+const microCopy = {
+  et: ["Väike partii", "Tallinn", "Kingituseks valmis"],
+  ru: ["Небольшие партии", "Tallinn", "Готово к подарку"],
+  en: ["Small batch", "Tallinn", "Gift ready"],
+} as const;
+
 export function Hero() {
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
 
   return (
     <section id="top" className="shell grid min-h-[calc(100svh-72px)] items-center gap-10 py-8 lg:grid-cols-[0.78fr_1.22fr] lg:py-12">
@@ -13,8 +19,12 @@ export function Hero() {
         <p className="eyebrow">{t.hero.eyebrow}</p>
         <h1 className="display mt-5 max-w-[8.5ch]">{t.hero.title}</h1>
         <p className="mt-6 max-w-lg text-balance text-base leading-7 text-cocoa/66 sm:text-lg">{t.hero.body}</p>
-        <div className="mt-8">
-          <a href="#chocolate" className="button button-dark min-h-12 focus-ring">{t.hero.cta}</a>
+        <div className="mt-8 flex flex-wrap gap-3">
+          <a href="#order" className="button button-dark min-h-12 focus-ring">{t.nav.order}</a>
+          <a href="#chocolate" className="button button-outline min-h-12 focus-ring">{t.hero.cta}</a>
+        </div>
+        <div className="mt-7 flex flex-wrap gap-x-5 gap-y-2 text-xs uppercase tracking-[.1em] text-cocoa/45" aria-label="Meloa highlights">
+          {microCopy[language].map((item) => <span key={item}>{item}</span>)}
         </div>
       </div>
 
@@ -22,7 +32,7 @@ export function Hero() {
         <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] bg-sand shadow-soft sm:aspect-[5/6] lg:aspect-[4/5]">
           <Image
             src={assetPath("/images/hero.webp")}
-            alt="Meloa handmade chocolate gifts in presentation boxes"
+            alt={`${t.hero.title} — Meloa`}
             fill
             priority
             sizes="(max-width: 1024px) 100vw, 60vw"
