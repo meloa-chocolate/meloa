@@ -1,7 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { BRAND } from "@/lib/brand";
+import { assetPath } from "@/lib/asset";
 import { LANGUAGE_LABELS, Language } from "@/lib/i18n";
 import { useLanguage } from "@/components/LanguageProvider";
 
@@ -39,8 +41,16 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-cocoa/8 bg-cream/88 backdrop-blur-xl">
       <div className="shell flex h-18 items-center justify-between gap-5">
-        <a href="#top" className="brand-mark focus-ring" aria-label={`${BRAND.name}, home`}>
-          {BRAND.name}
+        <a href="#top" className="focus-ring flex items-center gap-2 rounded-xl" aria-label={`${BRAND.name}, home`}>
+          <Image
+            src={assetPath("/brand/emblem.webp")}
+            alt=""
+            width={42}
+            height={42}
+            priority
+            className="h-10 w-10 rounded-full object-cover"
+          />
+          <span className="font-serif text-2xl leading-none tracking-[-0.03em] text-cocoa">Meloa</span>
         </a>
 
         <nav className="hidden items-center gap-6 md:flex" aria-label="Main navigation">
