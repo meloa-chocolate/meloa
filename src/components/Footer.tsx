@@ -10,7 +10,8 @@ export function Footer() {
     ["TikTok", BRAND.tiktok],
     ["Telegram", BRAND.telegram],
   ].filter(([, href]) => href && href !== "#");
-  const hasContact = BRAND.contact && !BRAND.contact.includes("example.com");
+  const contact = String(BRAND.contact);
+  const hasContact = contact.length > 0 && !contact.includes("example.com");
 
   return (
     <footer className="border-t border-cocoa/12 bg-sand/55">
@@ -34,7 +35,7 @@ export function Footer() {
             <p className="footer-title">{t.footer.order}</p>
             <div className="footer-links">
               <a href="#order">{t.footer.order}</a>
-              {hasContact && <a href={`mailto:${BRAND.contact}`}>{t.footer.contact}</a>}
+              {hasContact && <a href={`mailto:${contact}`}>{t.footer.contact}</a>}
             </div>
           </div>
 
