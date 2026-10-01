@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { assetPath } from "@/lib/asset";
 
 export function Hero() {
   return (
@@ -20,7 +21,7 @@ export function Hero() {
       <div className="order-1 lg:order-2">
         <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] bg-sand shadow-soft sm:aspect-[5/6] lg:aspect-[4/5]">
           <Image
-            src="/images/hero.jpg"
+            src={assetPath("/images/hero.jpg")}
             alt="Шоколад ручной работы в подарочной коробке среди цветов"
             fill
             priority
