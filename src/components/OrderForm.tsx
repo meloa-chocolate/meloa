@@ -1,9 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import { FormEvent, useState } from "react";
 import { availableProducts } from "@/data/products";
 import { useCart } from "@/components/CartProvider";
 import { useLanguage } from "@/components/LanguageProvider";
+import { assetPath } from "@/lib/asset";
 
 const ORDER_API_URL = process.env.NEXT_PUBLIC_ORDER_API_URL || "/api/order";
 
@@ -58,7 +60,8 @@ export function OrderForm() {
     return (
       <section id="order" className="section shell">
         <div className="mx-auto max-w-2xl rounded-[2rem] border border-cocoa/12 bg-cream p-8 text-center shadow-soft sm:p-12">
-          <p className="eyebrow">{t.order.successEyebrow}</p>
+          <Image src={assetPath("/brand/emblem.webp")} alt="" width={72} height={72} className="mx-auto h-16 w-16 rounded-2xl object-cover" />
+          <p className="eyebrow mt-5">{t.order.successEyebrow}</p>
           <h2 className="section-title mt-4">{t.order.successTitle}</h2>
           <p className="mx-auto mt-4 max-w-md text-base leading-7 text-cocoa/65">{t.order.successBody}</p>
           <button type="button" className="button button-dark mt-8 min-h-12 focus-ring" onClick={() => setStatus("idle")}>{t.order.again}</button>
@@ -148,7 +151,7 @@ export function OrderForm() {
 
       {count > 0 && (
         <div className="fixed inset-x-3 bottom-3 z-40 md:hidden">
-          <a href="#order" className="button button-dark min-h-14 w-full shadow-soft focus-ring">{t.nav.order} · {count} {barLabel} · €{total.toFixed(2)}</a>
+          <a href="#order" className="button button-dark min-h-14 w-full shadow-soft focus-ring">{t.nav.order} · {count} {barLabel} · €${total.toFixed(2)}</a>
         </div>
       )}
     </section>
