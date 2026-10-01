@@ -1,16 +1,68 @@
+"use client";
+
+import Image from "next/image";
 import { products } from "@/data/products";
-import { ProductCard } from "./ProductCard";
 
 export function ProductGrid() {
+  const signature = products.find((product) => product.id === "raspberry-pistachio")!;
+  const coming = products.filter((product) => product.id !== signature.id);
+
+  const addSignature = () => {
+    window.dispatchEvent(new CustomEvent("meloa:add-product", { detail: { id: signature.id } }));
+    document.querySelector("#order")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   return (
     <section id="chocolate" className="section shell">
       <div className="max-w-2xl">
-        <p className="eyebrow">THE COLLECTION</p>
-        <h2 className="section-title mt-4">Выберите свой вкус</h2>
-        <p className="mt-4 text-base leading-7 text-cocoa/65">Небольшие партии шоколада, созданные вручную.</p>
+        <p className="eyebrow">SIGNATURE BAR</p>
+        <h2 className="section-title mt-4">Raspberry Pistachio</h2>
       </div>
-      <div className="mt-10 grid gap-x-6 gap-y-14 md:grid-cols-2 xl:grid-cols-3">
-        {products.map((product) => <ProductCard key={product.id} product={product} />)}
+
+      <div className="mt-10 grid items-center gap-8 lg:grid-cols-[1.08fr_.92fr] lg:gap-14">
+        <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] bg-sand">
+          <Image
+            src={signature.image}
+            alt={signature.imageAlt}
+            fill
+            sizes="(max-width: 1024px) 100vw, 55vw"
+            className="object-cover transition-transform duration-700 motion-safe:hover:scale-[1.02]"
+          />
+          <span className="absolute left-5 top-5 rounded-full bg-berry px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.08em] text-cream">
+            Signature
+          </span>
+        </div>
+
+        <div>
+          <p className="text-sm uppercase tracking-[0.1em] text-cocoa/45">{signature.weight} · €{signature.price}</p>
+          <h3 className="mt-4 font-serif text-4xl leading-tight sm:text-5xl">Сливочный, ягодный, с лёгким солёным акцентом.</h3>
+          <p className="mt-5 max-w-lg text-base leading-7 text-cocoa/66">{signature.description}</p>
+          <p className="mt-5 max-w-lg text-sm leading-6 text-cocoa/52">{signature.subtitle}</p>
+          <button type="button" onClick={addSignature} className="button button-dark mt-8 min-h-12 focus-ring">
+            Добавить к заказу · €{signature.price}
+          </button>
+        </div>
+      </div>
+
+      <div className="mt-20 border-t border-cocoa/12 pt-8">
+        <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
+          <div>
+            <p className="eyebrow">COMING NEXT</p>
+            <h3 className="mt-3 font-serif text-3xl sm:text-4xl">Следующие вкусы</h3>
+          </div>
+          <p className="max-w-md text-sm leading-6 text-cocoa/55">Покажем их в продаже только после финальной рецептуры и реальной съёмки.</p>
+        </div>
+        <div className="mt-7 divide-y divide-cocoa/10 border-y border-cocoa/10">
+          {coming.map((product) => (
+            <div key={product.id} className="flex items-center justify-between gap-5 py-4">
+              <div>
+                <p className="font-serif text-xl">{product.name}</p>
+                <p className="mt-1 text-sm text-cocoa/52">{product.subtitle}</p>
+              </div>
+              <span className="shrink-0 text-xs uppercase tracking-[0.12em] text-cocoa/42">Coming soon</span>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
