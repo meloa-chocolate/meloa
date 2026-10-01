@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: `${BRAND.name} — käsitööšokolaad Tallinnas`,
   description: "Käsitööšokolaad ja väikesed kingitused Tallinnas. Väikesed partiid, läbimõeldud maitsed ja kinkimiseks valmis pakend.",
+  applicationName: BRAND.name,
+  alternates: { canonical: SITE_URL },
+  robots: { index: true, follow: true },
   openGraph: {
     title: `${BRAND.name} — handmade chocolate in Tallinn`,
     description: "Small-batch handmade chocolate, gift ready in Tallinn.",
