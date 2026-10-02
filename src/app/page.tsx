@@ -39,7 +39,7 @@ export default function Home() {
     name: BRAND.name,
     url: SITE_URL,
     logo: `${SITE_URL}/brand/emblem.webp`,
-    image: `${SITE_URL}/brand/og-preview.webp`,
+    image: `${SITE_URL}/brand/og-meloa-v1.png`,
     address: {
       "@type": "PostalAddress",
       addressLocality: "Tallinn",

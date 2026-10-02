@@ -5,7 +5,7 @@ import { SITE_URL } from "@/lib/site";
 import { LanguageProvider } from "@/components/LanguageProvider";
 import { CartProvider } from "@/components/CartProvider";
 
-const OG_IMAGE = `${SITE_URL}/brand/og-preview.webp`;
+const OG_IMAGE = `${SITE_URL}/brand/og-meloa-v1.png`;
 const BRAND_ICON = `${SITE_URL}/brand/emblem.webp`;
 
 export const metadata: Metadata = {
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     alternateLocale: ["ru_EE", "en_EE"],
     url: SITE_URL,
     siteName: BRAND.name,
-    images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: "Meloa — Handmade Chocolate · Tallinn" }],
+    images: [{ url: OG_IMAGE, width: 1729, height: 910, type: "image/png", alt: "Meloa — handmade gift chocolate with raspberry and pistachio. Tallinn." }],
   },
   twitter: {
     card: "summary_large_image",
