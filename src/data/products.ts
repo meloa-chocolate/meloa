@@ -35,8 +35,8 @@ export const products: Product[] = [
     ],
     price: 12,
     weight: "100 г",
-    image: "/images/raspberry-pistachio.webp",
-    imageAlt: "Подарочная коробка с белым шоколадом Raspberry Pistachio, малиной и фисташкой",
+    image: "/images/raspberry-closeup.jpg",
+    imageAlt: "Крупный план белого шоколада Raspberry Pistachio с малиной в подарочной бумаге",
     badge: "Signature",
     available: true,
     foodInfo: {
