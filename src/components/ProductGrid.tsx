@@ -107,7 +107,7 @@ export function ProductGrid() {
 
         <div>
           <div className="flex flex-wrap items-center gap-3">
-            <p className="text-sm uppercase tracking-[0.1em] text-cocoa/45">{t.signature.meta}</p>
+            <p className="text-sm uppercase tracking-[0.1em] text-cocoa/45">{signature.weight} · €{signature.price.toFixed(2)}</p>
             <span className="rounded-full bg-pistachio/24 px-3 py-1 text-xs font-medium text-cocoa">{ui.available}</span>
           </div>
           <h3 className="mt-4 font-serif text-4xl leading-tight sm:text-5xl">{t.signature.headline}</h3>
@@ -125,7 +125,7 @@ export function ProductGrid() {
               <button type="button" onClick={() => setQuantity(signature.id, quantity + 1)} className="focus-ring min-h-12 min-w-12 rounded-r-full text-xl" aria-label={ui.increase}>+</button>
             </div>
             <a href={quantity > 0 ? "#order" : "#chocolate"} onClick={addSignature} className="button button-dark min-h-12 focus-ring">
-              {quantity > 0 ? `${t.signature.inOrder} · ${quantity} · €${(quantity * signature.price).toFixed(2)}` : `${t.signature.add} · €${signature.price}`}
+              {quantity > 0 ? `${t.signature.inOrder} · ${quantity} · €${(quantity * signature.price).toFixed(2)}` : `${t.signature.add} · €${signature.price.toFixed(2)}`}
             </a>
           </div>
         </div>
