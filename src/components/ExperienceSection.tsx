@@ -84,7 +84,7 @@ const copy = {
   },
 } as const;
 
-const unboxingImages = ["/images/gift-box.webp", "/images/hero.webp", "/images/raspberry-pistachio.webp"];
+const unboxingImages = ["/images/gift-box-foto-1.jpg", "/images/hero.webp", "/images/raspberry-pistachio-foto-2.jpg"];
 
 export function ExperienceSection() {
   const { language } = useLanguage();
@@ -178,3 +178,4 @@ export function ExperienceSection() {
     </>
   );
 }
+

@@ -35,8 +35,8 @@ export const products: Product[] = [
     ],
     price: 15.5,
     weight: "136–155 g",
-    image: "/images/raspberry-closeup.jpg",
-    imageAlt: "Крупный план белого шоколада Raspberry Pistachio с малиной в подарочной бумаге",
+    image: "/images/raspberry-pistachio-foto-2.jpg",
+    imageAlt: "Белый шоколад Raspberry Pistachio с фисташкой в руках",
     badge: "Signature",
     available: true,
     foodInfo: {
@@ -103,3 +103,4 @@ export const products: Product[] = [
 ];
 
 export const availableProducts = products.filter((product) => product.available);
+
