@@ -62,7 +62,6 @@ export const products: Product[] = [
     imageAlt: "Шесть мини-капкейков Raspberry Pistachio с малиной и фисташками",
     badge: "Limited batch",
     available: true,
-    maxOrderQuantity: 1,
     foodInfo: {
       fullIngredients: "TODO: подтвердить полный состав перед продажей.",
       allergens: "TODO: подтвердить аллергены и возможные следы аллергенов.",
