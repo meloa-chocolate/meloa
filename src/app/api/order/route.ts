@@ -167,7 +167,7 @@ export async function POST(request: Request) {
   }
 
   if (!Array.isArray(body.items) || body.items.length === 0 || body.items.length > products.length) {
-    return json({ error: "Добавьте хотя бы одну плитку." }, { status: 400 });
+    return json({ error: "Добавьте хотя бы одну позицию." }, { status: 400 });
   }
 
   const items: { product: (typeof products)[number]; quantity: number }[] = [];
@@ -183,7 +183,9 @@ export async function POST(request: Request) {
     const quantity = item.quantity;
     const product = products.find((candidate) => candidate.id === id && candidate.available);
 
-    if (!product || typeof quantity !== "number" || !Number.isInteger(quantity) || quantity < 1 || quantity > 20 || seen.has(id)) {
+    const maxQuantity = product?.maxOrderQuantity ?? 20;
+
+    if (!product || typeof quantity !== "number" || !Number.isInteger(quantity) || quantity < 1 || quantity > maxQuantity || seen.has(id)) {
       return json({ error: "Проверьте товары и количество." }, { status: 400 });
     }
 
@@ -210,7 +212,7 @@ export async function POST(request: Request) {
     itemLines,
     "",
     "<b>Итого:</b>",
-    `${count} ${count === 1 ? "плитка" : "плиток"}`,
+    `${count} ${count === 1 ? "позиция" : "позиций"}`,
     `€${total.toFixed(2)}`,
     "",
     `<b>Получение:</b> ${escapeHtml(fulfillment)}`,
