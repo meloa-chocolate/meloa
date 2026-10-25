@@ -56,7 +56,7 @@ export const products: Product[] = [
     subtitle: "Мини-капкейки · малина · фисташка",
     description: "Небольшая партия мини-капкейков с малиной и фисташкой. Сейчас доступен один набор из 6 штук.",
     ingredients: ["Малина", "Фисташка"],
-    price: 18,
+    price: 12,
     weight: "~270 g · 6 × ~45 g",
     image: "/images/cupcakes-classic.svg",
     imageAlt: "Шесть мини-капкейков Raspberry Pistachio с малиной и фисташками",
