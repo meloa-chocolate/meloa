@@ -8,6 +8,7 @@ import { OrderForm } from "@/components/OrderForm";
 import { ProductGrid } from "@/components/ProductGrid";
 import { SocialSection } from "@/components/SocialSection";
 import { ExperienceSection } from "@/components/ExperienceSection";
+import { CupcakeSection } from "@/components/CupcakeSection";
 import { FlavorVoteSection } from "@/components/FlavorVoteSection";
 import { products } from "@/data/products";
 import { BRAND } from "@/lib/brand";
@@ -54,6 +55,7 @@ export default function Home() {
       <main id="main-content">
         <Hero />
         <ProductGrid />
+        <CupcakeSection />
         <ExperienceSection />
         <GiftSection />
         <EditorialSection />
