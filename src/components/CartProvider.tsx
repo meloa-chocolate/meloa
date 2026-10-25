@@ -20,12 +20,17 @@ const CartContext = createContext<CartContextValue | null>(null);
 export function CartProvider({ children }: { children: ReactNode }) {
   const [quantities, setQuantities] = useState<Quantities>(createEmpty);
 
+  const maxQuantityFor = (id: string) =>
+    availableProducts.find((product) => product.id === id)?.maxOrderQuantity ?? 20;
+
   const setQuantity = (id: string, next: number) => {
-    setQuantities((current) => ({ ...current, [id]: Math.max(0, Math.min(20, next)) }));
+    const max = maxQuantityFor(id);
+    setQuantities((current) => ({ ...current, [id]: Math.max(0, Math.min(max, next)) }));
   };
 
   const increment = (id: string) => {
-    setQuantities((current) => ({ ...current, [id]: Math.min(20, (current[id] ?? 0) + 1) }));
+    const max = maxQuantityFor(id);
+    setQuantities((current) => ({ ...current, [id]: Math.min(max, (current[id] ?? 0) + 1) }));
   };
 
   const summary = useMemo(() => availableProducts.reduce(
