@@ -64,7 +64,7 @@ export function ProductGrid() {
   const { quantities, setQuantity } = useCart();
   const [zoomed, setZoomed] = useState<string | null>(null);
   const signature = products.find((product) => product.id === "raspberry-pistachio")!;
-  const coming = products.filter((product) => product.id !== signature.id);
+  const coming = products.filter((product) => !product.available);
   const quantity = quantities[signature.id] ?? 0;
   const ui = localCopy[language];
 
