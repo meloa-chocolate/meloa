@@ -10,6 +10,7 @@ export type Product = {
   imageAlt: string;
   badge?: string;
   available: boolean;
+  maxOrderQuantity?: number;
   foodInfo: {
     fullIngredients?: string;
     allergens?: string;
@@ -42,6 +43,29 @@ export const products: Product[] = [
     foodInfo: {
       fullIngredients: "Белый бельгийский шоколад, фисташки (очищенные, несолёные), сублимированная малина, крупная морская соль.",
       allergens: "TODO: подтвердить перечень аллергенов и следов аллергенов.",
+      storage: "TODO: добавить подтверждённые условия хранения.",
+      bestBefore: "TODO: добавить срок годности / best before.",
+      nutrition: "TODO: добавить пищевую ценность.",
+      manufacturer: "TODO: добавить юридические данные производителя.",
+    },
+  },
+
+  {
+    id: "raspberry-pistachio-mini-cupcakes",
+    name: "Raspberry Pistachio Mini Cupcakes",
+    subtitle: "Мини-капкейки · малина · фисташка",
+    description: "Небольшая партия мини-капкейков с малиной и фисташкой. Сейчас доступен один набор из 6 штук.",
+    ingredients: ["Малина", "Фисташка"],
+    price: 18,
+    weight: "~270 g · 6 × ~45 g",
+    image: "/images/cupcakes-6.webp",
+    imageAlt: "Шесть мини-капкейков Raspberry Pistachio с малиной и фисташками",
+    badge: "Limited batch",
+    available: true,
+    maxOrderQuantity: 1,
+    foodInfo: {
+      fullIngredients: "TODO: подтвердить полный состав перед продажей.",
+      allergens: "TODO: подтвердить аллергены и возможные следы аллергенов.",
       storage: "TODO: добавить подтверждённые условия хранения.",
       bestBefore: "TODO: добавить срок годности / best before.",
       nutrition: "TODO: добавить пищевую ценность.",
