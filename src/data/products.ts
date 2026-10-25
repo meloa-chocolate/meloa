@@ -58,7 +58,7 @@ export const products: Product[] = [
     ingredients: ["Малина", "Фисташка"],
     price: 18,
     weight: "~270 g · 6 × ~45 g",
-    image: "/images/cupcakes-6.webp",
+    image: "/images/cupcakes-classic.svg",
     imageAlt: "Шесть мини-капкейков Raspberry Pistachio с малиной и фисташками",
     badge: "Limited batch",
     available: true,
